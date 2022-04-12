@@ -1,11 +1,25 @@
-import React from 'react';
+import { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import NumberContainer from '../components/game/NumberContainer';
 import Title from '../components/Title';
 
-function GameScreen() {
+function generateRandomBetween(min, max, exclude) {
+    const rndNum = Math.floor(Math.random() * (max - min)) + min;
+
+    if (rndNum === exclude) {
+        return generateRandomBetween(min, max, exclude);
+    } else {
+        return rndNum;
+    }
+}
+
+function GameScreen({ userNumber }) {
+    const initialGuess = generateRandomBetween(1, 100, userNumber)
+    const [currentGuess, setCurrentGuess] = useState(initialGuess);
     return (
         <View style={styles.screen}>
-            <Title>Your Chosen Number</Title>
+            <Title>The Magic Number</Title>
+            <NumberContainer>{currentGuess}</NumberContainer>
             <View>
                 <Text>Higher or Lower</Text>
             </View>
