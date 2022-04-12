@@ -19,7 +19,7 @@ function StartGameScreen({ onPickNumber }) {
         if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
             Alert.alert('Invalid Input!', 'Pick a number between 1 and 99.', [{
                 text: 'Okay', style: 'destructive', onPress: resetInputHandler
-            }])
+            }]);
             return;
         }
         onPickNumber(chosenNumber);
