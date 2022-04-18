@@ -15,7 +15,7 @@ export default NumberContainer;
 const styles = StyleSheet.create({
     container: {
         borderWidth: 4,
-        borderColor: Colors.gradientBottom,
+        borderColor: Colors.primary500,
         padding: 24,
         borderRadius: 8,
         margin: 24,

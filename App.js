@@ -30,7 +30,7 @@ export default function App() {
   }
 
   return (
-    <LinearGradient colors={['#cccccc', Colors.gradientBottom]} style={styles.rootScreen}>
+    <LinearGradient colors={['#777fc7', Colors.gradientBottom]} style={styles.rootScreen}>
       <ImageBackground source={require('./assets/images/background.jpg')} resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
