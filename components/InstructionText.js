@@ -1,8 +1,8 @@
 import { Text, StyleSheet } from 'react-native';
 
-function InstructionText({ children }) {
+function InstructionText({ children, style }) {
     return (
-        <Text style={styles.instructionText}>{children}</Text>
+        <Text style={[styles.instructionText, style]}>{children}</Text>
     )
 }
 
