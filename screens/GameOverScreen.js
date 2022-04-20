@@ -3,15 +3,15 @@ import { Image, View, Text, StyleSheet } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import Title from '../components/Title';
 
-function GameOverScreen() {
+function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
     return (
         <View style={styles.rootContainer}>
             <Title>GAME OVER!!!</Title>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={require('../assets/images/success.jpg')} />
             </View>
-            <Text style={styles.summaryText}>AI used <Text style={styles.highlight}>X</Text> tries to guess the number <Text style={styles.highlight}>Y</Text></Text>
-            <PrimaryButton>Play Again?</PrimaryButton>
+            <Text style={styles.summaryText}>AI used <Text style={styles.highlight}>{roundsNumber}</Text> tries to guess the number <Text style={styles.highlight}>{userNumber}</Text></Text>
+            <PrimaryButton onPress={onStartNewGame}>Play Again?</PrimaryButton>
         </View>
     )
 }
