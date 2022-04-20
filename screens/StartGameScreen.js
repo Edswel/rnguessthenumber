@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { View, TextInput, StyleSheet, Alert, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Alert } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import Title from '../components/Title';
+import Card from '../components/Card';
 import Colors from '../constants/colors';
+import InstructionText from '../components/InstructionText';
 
 function StartGameScreen({ onPickNumber }) {
     const [enteredNumber, setEnteredNumber] = useState('');
@@ -29,8 +31,8 @@ function StartGameScreen({ onPickNumber }) {
     return (
         <View style={styles.rootContainer}>
             <Title>Guessing Numbers</Title>
-            <View style={styles.inputContainer}>
-                <Text style={styles.instructionText}>Enter a Number</Text>
+            <Card>
+                <InstructionText>Enter a Number</InstructionText>
                 <TextInput style={styles.numberInput} maxLength={2} keyboardType='number-pad' autoCapitalize='none' autoCorrect={false} onChangeText={numberInputHandler} value={enteredNumber} />
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonContainer}>
@@ -40,7 +42,7 @@ function StartGameScreen({ onPickNumber }) {
                         <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
                     </View>
                 </View>
-            </View>
+            </Card>
         </View>
     )
 }
@@ -52,24 +54,6 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 100,
         alignItems: 'center'
-    },
-    inputContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 36,
-        marginHorizontal: 24,
-        padding: 16,
-        backgroundColor: Colors.primary500,
-        borderRadius: 8,
-        elevation: 4,
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6,
-        shadowOpacity: 0.25
-    },
-    instructionText: {
-        color: '#fff',
-        fontSize: 18
     },
     numberInput: {
         height: 50,
