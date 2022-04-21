@@ -58,7 +58,7 @@ function GameScreen({ userNumber, onGameOver }) {
 
     return (
         <View style={styles.screen}>
-            <Title>The Magic Number</Title>
+            <Title>AI's Guess</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card>
                 <InstructionText style={styles.instructionText}>Higher or Lower</InstructionText>
@@ -87,7 +87,8 @@ export default GameScreen;
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        padding: 24
+        padding: 24,
+        alignItems: 'center'
     },
     instructionText: {
         marginBottom: 12

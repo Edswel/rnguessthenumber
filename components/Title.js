@@ -17,7 +17,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderBottomWidth: 1,
         borderBottomColor: '#ffffff',
-        padding: 12
+        padding: 12,
+        maxWidth: '80%',
+        width: 300
 
     }
 });
