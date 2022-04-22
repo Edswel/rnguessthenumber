@@ -1,26 +1,49 @@
 import React from 'react';
-import { Image, View, Text, StyleSheet, Dimensions } from 'react-native';
+import { Image, View, Text, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import Title from '../components/Title';
 
 function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
+    const { width, height } = useWindowDimensions();
+
+    let imageSize = 300;
+
+    if (width < 300) {
+        imageSize = 150;
+    }
+
+    if (height < 400) {
+        imageSize = 80;
+    }
+
+    const imageStyle = {
+        width: imageSize,
+        height: imageSize,
+        borderRadius: imageSize / 2
+    }
+
     return (
-        <View style={styles.rootContainer}>
-            <Title>GAME OVER!!!</Title>
-            <View style={styles.imageContainer}>
-                <Image style={styles.image} source={require('../assets/images/success.jpg')} />
+        <ScrollView style={styles.screen}>
+            <View style={styles.rootContainer}>
+                <Title>GAME OVER!!!</Title>
+                <View style={[styles.imageContainer, imageStyle]}>
+                    <Image style={styles.image} source={require('../assets/images/success.jpg')} />
+                </View>
+                <Text style={styles.summaryText}>AI used <Text style={styles.highlight}>{roundsNumber}</Text> tries to guess the number <Text style={styles.highlight}>{userNumber}</Text></Text>
+                <PrimaryButton onPress={onStartNewGame}>Play Again?</PrimaryButton>
             </View>
-            <Text style={styles.summaryText}>AI used <Text style={styles.highlight}>{roundsNumber}</Text> tries to guess the number <Text style={styles.highlight}>{userNumber}</Text></Text>
-            <PrimaryButton onPress={onStartNewGame}>Play Again?</PrimaryButton>
-        </View>
+        </ScrollView>
     )
 }
 
 export default GameOverScreen;
 
-const deviceWidth = Dimensions.get('window').width;
+// const deviceWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1
+    },
     rootContainer: {
         flex: 1,
         padding: 24,
@@ -28,9 +51,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     imageContainer: {
-        borderRadius: deviceWidth < 300 ? 75 : 150,
-        width: deviceWidth < 300 ? 150 : 300,
-        height: deviceWidth < 300 ? 150 : 300,
+        // borderRadius: deviceWidth < 300 ? 75 : 150,
+        // width: deviceWidth < 300 ? 150 : 300,
+        // height: deviceWidth < 300 ? 150 : 300,
         overflow: 'hidden',
         margin: 36
     },
